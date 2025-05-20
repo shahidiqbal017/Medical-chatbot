@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediBot - Your Health Info Assistant</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body data-chat-url="{{ url_for('chat') }}">   <!-- <<<<<<<< MODIFIED THIS LINE -->
+    <div class="chat-app-container">
+        <header class="chat-header">
+            <div class="avatar-placeholder bot-avatar-header"><i class="fas fa-robot"></i></div>
+            <div class="header-info">
+                <h1>MediBot</h1>
+                <p class="status">Online - Health Info Assistant</p>
+            </div>
+        </header>
+
+        <main id="chat-box" class="chat-box">
+            <!-- Initial Bot Message -->
+            <div class="message bot-message">
+                <div class="avatar-placeholder bot-avatar-chat"><i class="fas fa-robot"></i></div>
+                <div class="message-content">
+                    <div class="message-bubble">
+                        <p>Hello! I can provide general information about conditions based on symptoms you describe. How can I help you today?</p>
+                        <p><small><strong>Note:</strong> I am an AI assistant. The information provided is based on general patterns and should not be considered a medical diagnosis. Always consult a qualified healthcare provider for medical concerns.</small></p>
+                    </div>
+                    <span class="timestamp">{{ "now" | timeformat }}</span>
+                </div>
+            </div>
+            <!-- Chat messages will be appended here -->
+        </main>
+
+        <footer class="chat-input-area">
+            <div id="typing-indicator" class="typing-indicator" style="display: none;">
+                <span></span><span></span><span></span> MediBot is typing...
+            </div>
+            <div class="input-wrapper">
+                <textarea id="user-input" placeholder="Describe your symptoms here..." rows="1"></textarea>
+                <button id="send-btn" title="Send Message">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
